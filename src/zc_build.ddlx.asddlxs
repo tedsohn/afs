@@ -1,0 +1,113 @@
+@Metadata.layer: #CORE
+@UI: {
+    headerInfo: {
+        typeNamePlural: 'Build',
+        title: {
+            type: #STANDARD, value: 'Code'
+        },
+        description: {
+            value: 'Description'
+        }
+    },
+    presentationVariant: [{
+        sortOrder: [{
+            by: 'LineItem',
+            direction: #ASC
+        }],
+        visualizations: [{
+            type: #AS_LINEITEM
+        }]
+    }]
+}
+
+annotate view ZC_BUILD with
+{
+  @UI.facet: [
+       {
+          label: 'Build Detail',
+          id: 'BuildInfo',
+          type: #COLLECTION,
+          position: 10
+       },
+       {
+          label: 'Build',
+          id: 'Build',
+          type: #IDENTIFICATION_REFERENCE,
+          purpose: #STANDARD,
+          parentId: 'BuildInfo',
+          position: 10
+       },
+      {
+          id: 'ReplyTable',
+          purpose: #STANDARD,
+          type: #LINEITEM_REFERENCE,
+          label: 'Reply Table',
+          position: 20,
+          targetElement: '_reply'
+      }
+    ]
+    
+  @UI.lineItem: [{ position: 1 }]
+  @UI.identification: [{ position: 1 }]
+  @EndUserText.label: 'MrcBuildUuid'
+  MrcBuildUuid;  
+    
+  @UI.lineItem: [{ position: 10 }]
+  @UI.identification: [{ position: 10 }]
+  @EndUserText.label: 'Build Code'
+  Code;
+  @UI.lineItem: [{ position: 20 }]
+  @UI.identification: [{ position: 20 }]
+    @EndUserText.label: 'Description'
+  Description;
+  @UI.lineItem: [{ position: 30 }]
+  @UI.identification: [{ position: 30 }]
+      @EndUserText.label: 'LongDescription'
+  LongDescription;
+  
+    
+  @UI.lineItem: [{ position: 40 }]
+  @UI.identification: [{ position: 40 }]
+  @EndUserText.label: 'LineItem'
+  LineItem;
+  
+  @UI.lineItem: [{ position: 50 }]
+  @UI.identification: [{ position: 50 }]
+    @EndUserText.label: 'MrcUuid'
+  MrcUuid;
+  
+  @UI.lineItem: [{ position: 60 }]
+  @UI.identification: [{ position: 60 }]
+      @EndUserText.label: 'ReplyTableUuid'
+  ReplyTableUuid;  
+
+   @UI.lineItem: [{ position: 80 }]
+  @UI.identification: [{ position: 80 }]
+        @EndUserText.label: 'Replytable'
+  Replytable; 
+  
+   @UI.lineItem: [{ position: 90 }]
+  @UI.identification: [{ position: 90 }]
+        @EndUserText.label: 'IsTemporary'
+  IsTemporary; 
+  
+    @UI.lineItem: [{ position: 100 }]
+  @UI.identification: [{ position: 100 }]
+        @EndUserText.label: 'CreatedBy'
+  CreatedBy;
+    @UI.lineItem: [{ position: 110 }]
+  @UI.identification: [{ position: 110 }]
+        @EndUserText.label: 'CreatedAt'
+  CreatedAt;  
+  
+  @UI.lineItem: [{ position: 110 }]
+  @UI.identification: [{ position: 110 }]
+  LastChangedAt;
+  @UI.lineItem: [{ position: 110  }]
+  @UI.identification: [{ position: 110 }]
+  LastChangedBy;
+  @UI.lineItem: [{ position: 110 }]
+  @UI.identification: [{ position: 110 }]
+  LocalLastChanged;
+
+}

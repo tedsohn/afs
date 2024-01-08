@@ -1,0 +1,40 @@
+projection;
+strict ( 2 );
+
+define behavior for ZC_MRC //alias <alias_name>
+{
+  use create;
+  use update;
+  use delete;
+
+  use association _build { create; }
+}
+
+define behavior for ZC_BUILD //alias <alias_name>
+{
+  use update;
+  use delete;
+
+  use association _mrc;
+  use association _reply { create; }
+}
+
+define behavior for ZC_REPLY //alias <alias_name>
+{
+  use update;
+  use delete;
+
+  use association _mrc;
+  use association _build;
+  use association _replycode { create; }
+}
+
+define behavior for ZC_REPLYCODE //alias <alias_name>
+{
+  use update;
+  use delete;
+
+  use association _mrc;
+  use association _build;
+  use association _reply;
+}

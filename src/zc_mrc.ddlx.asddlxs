@@ -1,0 +1,82 @@
+@Metadata.layer: #CORE
+@UI: {
+    headerInfo: {
+        typeNamePlural: 'MRC',
+        title: {
+            type: #STANDARD, value: 'Code'
+        },
+        description: {
+            value: 'Description'
+        }
+    },
+    presentationVariant: [{
+        sortOrder: [{
+            by: 'Code',
+            direction: #ASC
+        }],
+        visualizations: [{
+            type: #AS_LINEITEM
+        }]
+    }]
+}
+
+annotate view ZC_MRC with
+{
+  @UI.facet: [
+       {
+          label: 'MRC Detail',
+          id: 'MRCInfo',
+          type: #COLLECTION,
+          position: 10
+       },
+       {
+          label: 'MRC',
+          id: 'MRC',
+          type: #IDENTIFICATION_REFERENCE,
+          purpose: #STANDARD,
+          parentId: 'MRCInfo',
+          position: 10
+       },
+      {
+          id: 'Build',
+          purpose: #STANDARD,
+          type: #LINEITEM_REFERENCE,
+          label: 'Build',
+          position: 20,
+          targetElement: '_build'
+      }
+    ]
+    
+  @UI.lineItem: [{ position: 1 }]
+  @UI.identification: [{ position: 1 }]
+  @EndUserText.label: 'MrcUUID'
+  MrcUuid;  
+    
+  @UI.lineItem: [{ position: 10 }]
+  @UI.identification: [{ position: 10 }]
+  @EndUserText.label: 'MRC Code'
+  Code;
+  @UI.lineItem: [{ position: 20 }]
+  @UI.identification: [{ position: 20 }]
+    @EndUserText.label: 'Description'
+  Description;
+  @UI.lineItem: [{ position: 30 }]
+  @UI.identification: [{ position: 30 }]
+      @EndUserText.label: 'LongDescription'
+  LongDescription;
+  
+  @UI.lineItem: [{ position: 40 }]
+  @UI.identification: [{ position: 40 }]
+        @EndUserText.label: 'ModeCode'
+  ModeCode;
+  @UI.lineItem: [{ position: 50 }]
+  @UI.identification: [{ position: 50 }]
+  LastChangedAt;
+  @UI.lineItem: [{ position: 60 }]
+  @UI.identification: [{ position: 60 }]
+  LastChangedBy;
+  @UI.lineItem: [{ position: 70 }]
+  @UI.identification: [{ position: 70 }]
+  LocalLastChanged;
+
+}

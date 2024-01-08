@@ -1,0 +1,8 @@
+@EndUserText.label: 'ZC_MRC'
+define service ZC_MRC {
+  expose ZC_MRC;
+  expose ZC_BUILD;
+  expose ZC_REPLY;
+  expose ZC_REPLYCODE;
+  expose ZI_NODES;
+}

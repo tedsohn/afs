@@ -1,0 +1,92 @@
+@Metadata.layer: #CORE
+@UI: {
+    headerInfo: {
+        typeNamePlural: 'Reply Code',
+        title: {
+            type: #STANDARD, value: 'Code'
+        },
+        description: {
+            value: 'Description'
+        }
+    },
+    presentationVariant: [{
+        sortOrder: [{
+            by: 'ReplyCodeUuid',
+            direction: #ASC
+        }],
+        visualizations: [{
+            type: #AS_LINEITEM
+        }]
+    }]
+}
+
+annotate view ZC_REPLYCODE with
+{
+  @UI.facet: [
+       {
+          label: 'Reply Code Detail',
+          id: 'ReplyCodeInfo',
+          type: #COLLECTION,
+          position: 10
+       },
+       {
+          label: 'Reply Code',
+          id: 'ReplyCode',
+          type: #IDENTIFICATION_REFERENCE,
+          purpose: #STANDARD,
+          parentId: 'ReplyCodeInfo',
+          position: 10
+       }
+    ]
+
+
+
+  @UI.lineItem: [{ position: 10 }]
+  @UI.identification: [{ position: 10 }]
+  @EndUserText.label: 'ReplyCodeUuid'
+  ReplyCodeUuid;
+
+  @UI.lineItem: [{ position: 20 }]
+  @UI.identification: [{ position: 20 }]
+  @EndUserText.label: 'ReplyTableUuid'
+  ReplyTableUuid;
+
+  @UI.lineItem: [{ position: 30 }]
+  @UI.identification: [{ position: 30 }]
+  @EndUserText.label: 'Reply Code'
+  Code;
+  @UI.lineItem: [{ position: 40 }]
+  @UI.identification: [{ position: 40 }]
+    @EndUserText.label: 'Description'
+  Description;
+  @UI.lineItem: [{ position: 50 }]
+  @UI.identification: [{ position: 50 }]
+      @EndUserText.label: 'LongDescription'
+  LongDescription;
+
+  @UI.lineItem: [{ position: 60 }]
+  @UI.identification: [{ position: 60 }]
+  @EndUserText.label: 'IsTemporary'
+  IsTemporary;
+
+
+  @UI.lineItem: [{ position: 70 }]
+  @UI.identification: [{ position: 70 }]
+  @EndUserText.label: 'CreatedBy'
+  CreatedBy;
+  @UI.lineItem: [{ position: 80 }]
+  @UI.identification: [{ position: 80 }]
+  @EndUserText.label: 'CreatedAt'
+  CreatedAt;
+
+  @UI.lineItem: [{ position: 90 }]
+  @UI.identification: [{ position: 90 }]
+  LastChangedAt;
+  @UI.lineItem: [{ position: 100  }]
+  @UI.identification: [{ position: 100 }]
+  LastChangedBy;
+  @UI.lineItem: [{ position: 110 }]
+  @UI.identification: [{ position: 110 }]
+  LocalLastChanged;
+
+}

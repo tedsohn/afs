@@ -1,0 +1,145 @@
+managed implementation in class zbp_i_mrc unique;
+strict ( 2 );
+
+define behavior for ZI_MRC alias MRC
+persistent table zmrc
+
+lock master
+etag master LastChangedAt
+authorization master ( instance )
+{
+  field ( readonly ) MrcUuid, LastChangedAt, LastChangedBy, LocalLastChanged;
+  field ( numbering : managed ) MrcUuid;
+  field ( readonly : update ) Code;  //
+
+  create;
+  update;
+  delete;
+  association _build { create; }
+
+  mapping for zmrc
+    {
+      MrcUuid            = mrc_uuid;
+      Code               = code;
+      Description        = description;
+      LongDescription    = long_description;
+      MultipleIterations = multiple_iterations;
+      FFFRelated         = fff_related;
+      ModeCode           = mode_code;
+      IsTemporary        = is_temporary;
+      CreatedBy          = created_by;
+      CreatedAt          = created_at;
+      LastChangedAt      = last_changed_at;
+      LastChangedBy      = last_changed_by;
+      LocalLastChanged   = local_last_changed;
+    }
+
+}
+
+define behavior for ZI_BUILD alias Build
+persistent table zmrcbuild
+lock dependent by _mrc
+authorization dependent by _mrc
+etag master LastChangedAt
+{
+  update;
+  delete;
+
+  field ( readonly )
+  mrcuuid,
+  MRCBuildUUID,
+  LocalLastChanged;
+
+  field ( numbering : managed )
+  MRCBuildUUID;
+
+  association _mrc;
+  association _reply { create; }
+
+  mapping for zmrcbuild
+    {
+      MrcBuildUuid     = mrc_build_uuid;
+      LineItem         = line_item;
+      Code               = code;
+      Description        = description;
+      LongDescription    = long_description;
+      MrcUuid          = mrc_uuid;
+      ReplyTableUUID   = reply_table_uuid;
+      ReplyTable       = replytable;
+      IsTemporary      = is_temporary;
+      CreatedBy        = created_by;
+      CreatedAt        = created_at;
+      LastChangedBy    = last_changed_by;
+      LastChangedAt    = last_changed_at;
+      LocalLastChanged = local_last_changed;
+    }
+}
+
+define behavior for ZI_REPLY alias Reply
+persistent table zreplytable
+lock dependent by _mrc
+authorization dependent by _mrc
+etag master LastChangedAt
+{
+  update;
+  delete;
+  field ( readonly ) ReplytableUuid, MRCBuildUuid, MRCUUID;
+
+  field ( numbering : managed )
+  ReplytableUuid;
+
+  association _mrc { }
+  association _build { }
+  association _replycode { create; }
+
+  mapping for zreplytable
+    {
+      ReplyTableUUID   = replytable_uuid;
+      MRCBuildUuid     = build_uuid;
+      ReplyTable       = replytable;
+      ReplyCodeSize    = replycodesize;
+      Isac             = isac;
+      Code               = code;
+      Description        = description;
+      LongDescription    = long_description;
+      IsTemporary      = istemporary;
+      CreatedBy        = created_by;
+      CreatedAt        = created_at;
+      LastChangedAt    = last_changed_at;
+      LastChangedBy    = last_changed_by;
+      LocalLastChanged = local_last_changed;
+    }
+}
+
+define behavior for ZI_REPLYCODE alias ReplyCode
+persistent table zreplycode
+lock dependent by _mrc
+authorization dependent by _mrc
+etag master LastChangedAt
+{
+  update;
+  delete;
+  field ( readonly ) ReplyCodeUuid, ReplyTableUuid, MRCBuildUuid, MRCUUID;
+  field ( numbering : managed )
+  ReplyCodeUuid;
+
+  association _mrc;
+  association _build;
+  association _reply;
+
+  mapping for zreplycode
+    {
+      ReplyCodeUUID    = reply_code_uuid;
+      ReplyTableUUID   = reply_table_uuid;
+      Code               = code;
+      Description        = description;
+      LongDescription    = long_description;
+      IsTemporary      = is_temporary;
+      CreatedBy        = created_by;
+      CreatedAt        = created_at;
+      LastChangedBy    = last_changed_by;
+      LastChangedAt    = last_changed_at;
+      LocalLastChanged = local_last_changed;
+    }
+
+}

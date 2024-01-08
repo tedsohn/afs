@@ -1,0 +1,112 @@
+@Metadata.layer: #CORE
+@UI: {
+    headerInfo: {
+        typeNamePlural: 'Reply Table',
+        title: {
+            type: #STANDARD, value: 'Code'
+        },
+        description: {
+            value: 'Description'
+        }
+    },
+    presentationVariant: [{
+        sortOrder: [{
+            by: 'ReplytableUuid',
+            direction: #ASC
+        }],
+        visualizations: [{
+            type: #AS_LINEITEM
+        }]
+    }]
+}
+
+annotate view ZC_REPLY with
+{
+  @UI.facet: [
+       {
+          label: 'Reply Table Detail',
+          id: 'ReplyTableInfo',
+          type: #COLLECTION,
+          position: 10
+       },
+       {
+          label: 'Reply Table',
+          id: 'ReplyTable',
+          type: #IDENTIFICATION_REFERENCE,
+          purpose: #STANDARD,
+          parentId: 'ReplyTableInfo',
+          position: 10
+       },
+      {
+          id: 'ReplyCode',
+          purpose: #STANDARD,
+          type: #LINEITEM_REFERENCE,
+          label: 'Reply Code',
+          position: 20,
+          targetElement: '_replycode'
+      }
+    ]
+
+  @UI.lineItem: [{ position: 1 }]
+  @UI.identification: [{ position: 1 }]
+  @EndUserText.label: 'ReplytableUuid'
+  ReplytableUuid;
+
+  @UI.lineItem: [{ position: 10 }]
+  @UI.identification: [{ position: 10 }]
+  @EndUserText.label: 'ReplyTable Code'
+  Code;
+  @UI.lineItem: [{ position: 20 }]
+  @UI.identification: [{ position: 20 }]
+    @EndUserText.label: 'Description'
+  Description;
+  @UI.lineItem: [{ position: 30 }]
+  @UI.identification: [{ position: 30 }]
+      @EndUserText.label: 'LongDescription'
+  LongDescription;
+
+  @UI.lineItem: [{ position: 110 }]
+  @UI.identification: [{ position: 110 }]
+  @EndUserText.label: 'BuildUuid'
+  MRCBuildUuid;
+  
+  @UI.lineItem: [{ position: 120 }]
+  @UI.identification: [{ position: 120 }]
+  @EndUserText.label: 'Replytable'
+  Replytable;
+  
+  @UI.lineItem: [{ position: 130 }]
+  @UI.identification: [{ position: 130 }]
+  @EndUserText.label: 'Replycodesize'
+  Replycodesize;
+  
+  @UI.lineItem: [{ position: 140 }]
+  @UI.identification: [{ position: 140 }]
+  @EndUserText.label: 'Isac'
+  Isac;
+
+  @UI.lineItem: [{ position: 160 }]
+  @UI.identification: [{ position: 160 }]
+  @EndUserText.label: 'IsTemporary'
+  Istemporary;
+
+  @UI.lineItem: [{ position: 170 }]
+  @UI.identification: [{ position: 170 }]
+  @EndUserText.label: 'CreatedBy'
+  CreatedBy;
+  @UI.lineItem: [{ position: 180 }]
+  @UI.identification: [{ position: 180 }]
+  @EndUserText.label: 'CreatedAt'
+  CreatedAt;
+
+  @UI.lineItem: [{ position: 190 }]
+  @UI.identification: [{ position: 190 }]
+  LastChangedAt;
+  @UI.lineItem: [{ position: 190  }]
+  @UI.identification: [{ position: 190 }]
+  LastChangedBy;
+  @UI.lineItem: [{ position: 190 }]
+  @UI.identification: [{ position: 190 }]
+  LocalLastChanged;
+
+}
