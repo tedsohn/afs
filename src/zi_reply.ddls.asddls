@@ -28,8 +28,8 @@ define view entity ZI_REPLY
       
         '       '                  as  SpecSize, 
         '       '                  as Dimension,
-        '          '                  as Character1, 
-        '          '                  as Character2,  
+        $projection.SpecSize        as SizeDisplay, 
+        $projection.Dimension       as DimensionDisplay,
         
     //association
       _mrc,  

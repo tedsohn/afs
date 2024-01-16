@@ -13,8 +13,9 @@ as select from ZI_MRC
     MrcUuid             as NodeParentKey,
     SpecSize            as NodeSize, 
     Dimension           as NodeDimension,
-    Character1          as NodeCharacter1, 
-    Character2          as NodeCharacter2     
+    DimensionDisplay    as NodeDimensionDisplay,
+    SizeDisplay         as NodeSizeDisplay 
+
 }    
 union select from ZI_BUILD
 {       
@@ -23,10 +24,11 @@ union select from ZI_BUILD
         Code                as NodeCode,
     Description         as NodeDescription,
     MrcUuid             as NodeParentKey, 
-        SpecSize            as NodeSize, 
+    SpecSize            as NodeSize, 
     Dimension           as NodeDimension,
-    Character1          as NodeCharacter1, 
-    Character2          as NodeCharacter2   
+    DimensionDisplay    as NodeDimensionDisplay,
+    SizeDisplay         as NodeSizeDisplay 
+ 
 }
 union select from ZI_REPLY
 {   
@@ -35,10 +37,11 @@ union select from ZI_REPLY
         Code                as NodeCode,
     Description         as NodeDescription,
     MRCBuildUuid        as NodeParentKey,
-        SpecSize            as NodeSize, 
+    SpecSize            as NodeSize, 
     Dimension           as NodeDimension,
-    Character1          as NodeCharacter1, 
-    Character2          as NodeCharacter2   
+    DimensionDisplay    as NodeDimensionDisplay,
+    SizeDisplay         as NodeSizeDisplay 
+
 }
 union select from ZI_REPLYCODE
 {       
@@ -49,6 +52,7 @@ union select from ZI_REPLYCODE
     ReplyTableUuid      as NodeParentKey,
         SpecSize            as NodeSize, 
     Dimension           as NodeDimension,
-    Character1          as NodeCharacter1, 
-    Character2          as NodeCharacter2   
+    DimensionDisplay    as NodeDimensionDisplay,
+    SizeDisplay         as NodeSizeDisplay 
+ 
 }

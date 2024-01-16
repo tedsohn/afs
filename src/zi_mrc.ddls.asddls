@@ -27,10 +27,12 @@ define root view entity ZI_MRC
       zmrc.last_changed_by     as LastChangedBy,
       zmrc.local_last_changed  as LocalLastChanged,
 
-        '       '                  as  SpecSize, 
-        '       '                  as Dimension,
-        '          '                  as Character1, 
-        '          '                  as Character2,  
+        '       '                  as SpecSize, 
+        '       '                  as Dimension,  
+        $projection.SpecSize        as SizeDisplay, 
+        $projection.Dimension       as DimensionDisplay,
+        
+        
     
       _build // Make association public
 }

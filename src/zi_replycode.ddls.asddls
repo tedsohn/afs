@@ -23,11 +23,10 @@ define view entity ZI_REPLYCODE as select from zreplycode
     _reply.MRCUUID as MRCUUID, 
     _reply.MRCBuildUuid as MRCBuildUuid, 
     
-        'XS'                  as  SpecSize, 
-        '3D  '                   as Dimension,
-        'Cha1 Value'                  as Character1, 
-        'Cha2 Value'                  as Character2,  
-
+        'XS'                        as SpecSize, 
+        '3D  '                      as Dimension,  
+        $projection.SpecSize        as SizeDisplay, 
+        $projection.Dimension       as DimensionDisplay,
     //association
     _mrc,  
     _build,    
