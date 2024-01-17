@@ -10,7 +10,7 @@ authorization master ( instance )
 {
   field ( readonly ) MrcUuid, LastChangedAt, LastChangedBy, LocalLastChanged;
   field ( numbering : managed ) MrcUuid;
-  field ( readonly : update ) Code;  //
+ field ( readonly : update ) Code;  //
 
   create;
   update;
